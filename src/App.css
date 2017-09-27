@@ -14,14 +14,6 @@ li {
   flex-wrap: wrap;
 }
 
-.container-games {
-  width: 40%;
-}
-
-.container-myGames {
-  width: 50%;
-}
-
 .list-myGames {
   display: flex;
   justify-content: space-between;

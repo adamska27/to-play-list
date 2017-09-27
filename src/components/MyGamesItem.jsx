@@ -8,27 +8,25 @@ const mysGamesItem = ({game}) => {
   let srcImg = ""
   game.cover !== undefined ? srcImg = (`https:${game.cover.url}`).replace(re, 'cover_big') : srcImg = 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   return(
-    <li>
-      <div className= "ui card" >
-        <div className="image">
-          <img src={srcImg} /></div>
-        <div className="content">
-          <a className="header">{game.name}</a>
-          <div className="meta">
-            <span className="date">Joined in 2013</span>
-          </div>
-          <div className="description">
-            Kristy is an art director living in New York.
-          </div>
+    <div className= "card" >
+      <div className="image">
+        <img src={srcImg} /></div>
+      <div className="content">
+        <a className="header">{game.name}</a>
+        <div className="meta">
+          <span className="date">Joined in 2013</span>
         </div>
-        <div className="extra content">
-          <a>
-            <i className="user icon"></i>
-            22 Friends
-          </a>
+        <div className="description">
+          Kristy is an art director living in New York.
         </div>
       </div>
-    </li>
+      <div className="extra content">
+        <a>
+          <i className="user icon"></i>
+          22 Friends
+        </a>
+      </div>
+    </div>
   )
 }
 

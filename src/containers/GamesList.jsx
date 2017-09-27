@@ -6,7 +6,7 @@ import '../App.css'
 
 class GamesList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       games: [],
       myGames: [],
@@ -94,9 +94,10 @@ class GamesList extends Component {
               name="search"
               value={this.state.search}
               handleChange={this.handleChange} />
+            <button type='submit'>Valider</button>
           </form>
 
-          <ul>
+          <div className="ui divided items">
             {this.state.games.map( (game, index) => {
               return (
                 <GamesItem
@@ -106,7 +107,7 @@ class GamesList extends Component {
                   addGame={this.addGame.bind(this, index)}
                 />)
             })}
-          </ul>
+          </div>
         </div>
 
         <div className="container-myGames">
@@ -115,11 +116,10 @@ class GamesList extends Component {
           <button onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
           <button onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
 
-          <ul className="list-myGames">
+          <ul className="ui link cards">
             {
               games ? (games.map( (game, index) => {
                 if (game.played === null) game.played = false
-                console.log(game)
                 return (
                   <MyGamesItem
                     key={game.id}
