@@ -88,9 +88,14 @@ class GamesList extends Component {
     return(
       <div className="content">
 
-        <div className="container-games">
+        <section className="ui segment">
+
+          <div className="ui sizer vertical segment subtitle">
+            <div className="ui huge header subtitle-text">Cherchez un jeu à ajouter à votre to play list</div>
+          </div>
+
           <form onSubmit={this.searchGame.bind(this)} >
-            <Input label="Recherche un jeu à ajouter à votre bibliothèque: "
+            <Input label="Entrez votre recherche: "
               name="search"
               value={this.state.search}
               handleChange={this.handleChange} />
@@ -108,15 +113,19 @@ class GamesList extends Component {
                 />)
             })}
           </div>
-        </div>
+        </section>
 
-        <div className="container-myGames">
+        <section className="ui segment myGames-container">
+
+          <div className="ui sizer vertical segment subtitle">
+            <div className="ui huge header subtitle-text">Votre to play list</div>
+          </div>
 
           <button onClick={this.selectFilter.bind(this, 'all')}>Tous</button>
           <button onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
           <button onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
 
-          <div className="ui link cards">
+          <div className="ui link cards myGames-list">
             {
               games ? (games.map( (game, index) => {
                 console.log(game)
@@ -135,7 +144,7 @@ class GamesList extends Component {
                 console.log('noMyGames')
             }
           </div>
-        </div>
+        </section>
       </div>
     )
   }

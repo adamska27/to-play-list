@@ -12,10 +12,26 @@ li {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding: 15px;
 }
 
-.container-myGames {
+.content > .ui > .subtitle {
+  background: linear-gradient(to right, #303F9F, #00BCD4);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.subtitle-text {
+  color: white !important;
+}
+
+.myGames-container {
   width: 50%;
+  margin-top: 0 !important;
+}
+
+.myGames-list {
+  padding: 15px 0;
 }
 
 .list-myGames {
