@@ -116,9 +116,10 @@ class GamesList extends Component {
           <button onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
           <button onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
 
-          <ul className="ui link cards">
+          <div className="ui link cards">
             {
               games ? (games.map( (game, index) => {
+                console.log(game)
                 if (game.played === null) game.played = false
                 return (
                   <MyGamesItem
@@ -133,7 +134,7 @@ class GamesList extends Component {
                 :
                 console.log('noMyGames')
             }
-          </ul>
+          </div>
         </div>
       </div>
     )
