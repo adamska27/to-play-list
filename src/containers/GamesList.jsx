@@ -86,7 +86,7 @@ class GamesList extends Component {
     // }
 
     return(
-      <div className="content">
+      <div className="app-content">
 
         <section className="ui segment">
 
@@ -128,8 +128,8 @@ class GamesList extends Component {
           <div className="ui link cards myGames-list">
             {
               games ? (games.map( (game, index) => {
+                if (game.played === undefined) game.played = false
                 console.log(game)
-                if (game.played === null) game.played = false
                 return (
                   <MyGamesItem
                     key={game.id}

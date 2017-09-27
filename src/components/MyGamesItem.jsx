@@ -1,8 +1,8 @@
 import React from 'react'
 
-const mysGamesItem = ({game}) => {
-  // let classGame = ""
-  // if (game.played) classGame = "played"
+const mysGamesItem = ({game, checkGame}) => {
+  let classGame = ""
+  if (game.played) classGame = "played"
 
   let re = /thumb/
   let srcImg = ""
@@ -11,16 +11,16 @@ const mysGamesItem = ({game}) => {
   let date = new Date(game.release_dates[0].date).toDateString().slice(3)
 
   return(
-    <div className= "card" >
+    <div className={`card ${classGame}`}>
       <div className="image">
-        <img src={srcImg} /></div>
+        <img src={srcImg} alt={game.name} /></div>
       <div className="content">
         <a className="header">{game.name}</a>
         <div className="meta">
           <span className="date">date de sortie: {date}</span>
         </div>
         <div className="description">
-          Kristy is an art director living in New York.
+          <button onClick={checkGame}>{game.played ? <i className="checkmark icon"></i> : "you play this game?"}</button>
         </div>
       </div>
       <div className="extra content">

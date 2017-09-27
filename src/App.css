@@ -8,14 +8,14 @@ li {
   list-style-type: none;
 }
 
-.content {
+.app-content {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 15px;
 }
 
-.content > .ui > .subtitle {
+.app-content > .ui > .subtitle {
   background: linear-gradient(to right, #303F9F, #00BCD4);
   border-radius: 5px;
   padding: 10px;
@@ -41,6 +41,5 @@ li {
 }
 
 .played {
-  text-decoration: line-through;
-  color: red;
+  border: #00C853 solid 3px !important;
 }
