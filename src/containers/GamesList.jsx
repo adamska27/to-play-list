@@ -4,6 +4,8 @@ import MyGamesItem from '../components/MyGamesItem';
 import Input from '../components/Input';
 import '../App.css'
 
+import swal from 'sweetalert'
+
 class GamesList extends Component {
   constructor(props) {
     super(props)
@@ -65,6 +67,11 @@ class GamesList extends Component {
     let gameToAdd = this.state.games[index]
     this.setState({
       myGames: [...this.state.myGames, gameToAdd]
+    })
+    swal({
+      title: "Bien joué",
+      text: `${gameToAdd.name} a bien été ajouté`,
+      icon: "success"
     })
   }
 
