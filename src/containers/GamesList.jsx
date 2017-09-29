@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import GamesItem from '../components/GamesItem';
-import MyGamesItem from '../components/MyGamesItem';
-import Input from '../components/Input';
+import GamesItem from '../components/GamesItem'
+import MyGamesItem from '../components/MyGamesItem'
+import Input from '../components/Input'
+import Button from '../components/Button'
+
 import '../App.css'
 
 import swal from 'sweetalert'
@@ -106,7 +108,7 @@ class GamesList extends Component {
               name="search"
               value={this.state.search}
               handleChange={this.handleChange} />
-            <button className="ui button" type='submit'>Valider</button>
+            <Button type='submit' text='valider'/>
           </form>
 
           <div className="ui divided items">
@@ -128,9 +130,9 @@ class GamesList extends Component {
             <div className="ui huge header subtitle-text">Votre to play list</div>
           </div>
 
-          <button className="ui button" onClick={this.selectFilter.bind(this, 'all')}>Tous</button>
-          <button className="ui button" onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
-          <button className="ui button" onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
+          <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
+          <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
+          <Button onClick={this.selectFilter.bind(this, 'to play')} text="A jouer" />
 
           <div className="ui link cards myGames-list">
             {
