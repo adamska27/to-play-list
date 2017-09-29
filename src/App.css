@@ -8,6 +8,10 @@ li {
   list-style-type: none;
 }
 
+form {
+  margin: 15px auto;
+}
+
 .app-content {
   display: flex;
   justify-content: space-around;

@@ -94,12 +94,12 @@ class GamesList extends Component {
             <div className="ui huge header subtitle-text">Cherchez un jeu à ajouter à votre to play list</div>
           </div>
 
-          <form onSubmit={this.searchGame.bind(this)} >
+          <form className="ui form" onSubmit={this.searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "
               name="search"
               value={this.state.search}
               handleChange={this.handleChange} />
-            <button type='submit'>Valider</button>
+            <button className="ui button" type='submit'>Valider</button>
           </form>
 
           <div className="ui divided items">
@@ -121,9 +121,9 @@ class GamesList extends Component {
             <div className="ui huge header subtitle-text">Votre to play list</div>
           </div>
 
-          <button onClick={this.selectFilter.bind(this, 'all')}>Tous</button>
-          <button onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
-          <button onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
+          <button className="ui button" onClick={this.selectFilter.bind(this, 'all')}>Tous</button>
+          <button className="ui button" onClick={this.selectFilter.bind(this, 'played')}>Joué</button>
+          <button className="ui button" onClick={this.selectFilter.bind(this, 'to play')}>A faire</button>
 
           <div className="ui link cards myGames-list">
             {

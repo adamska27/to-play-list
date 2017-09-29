@@ -2,7 +2,7 @@ import React from 'react'
 
 const Input = ({label, handleChange, value, name, type}) => {
   return(
-    <div>
+    <div className="field">
       <label>{label}</label><br/>
       <input type={type} name={name} onChange={handleChange} value={value}/>
     </div>
