@@ -130,9 +130,11 @@ class GamesList extends Component {
             <div className="ui huge header subtitle-text">Votre to play list</div>
           </div>
 
-          <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
-          <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
-          <Button onClick={this.selectFilter.bind(this, 'to play')} text="A jouer" />
+          <div className="filter-container">
+            <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
+            <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
+            <Button onClick={this.selectFilter.bind(this, 'to play')} text="A jouer" />
+          </div>
 
           <div className="ui link cards myGames-list">
             {
