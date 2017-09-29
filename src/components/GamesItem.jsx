@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 const GamesItem = ({game, addGame, getBetterImg}) => {
 
@@ -18,7 +19,7 @@ const GamesItem = ({game, addGame, getBetterImg}) => {
           <p></p>
         </div>
         <div className="extra">
-          <div className="ui right floated button" onClick={addGame}>Ajouter</div>
+          <Button className="ui right floated button" onClick={addGame} text="Ajouter"/>
         </div>
       </div>
     </div>

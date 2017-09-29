@@ -50,5 +50,13 @@ form {
 }
 
 .played {
-  border: #00C853 solid 3px !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.played > .image > img {
+  filter: contrast(0.5) !important;
+   -webkit-filter: sepia(0.5);
+   -moz-filter: sepia(0.5);
+   -o-filter: sepia(0.5);
+   -ms-filter: sepia(0.5);
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 const mysGamesItem = ({game, checkGame, getBetterImg}) => {
   let classGame = ""
@@ -6,7 +7,7 @@ const mysGamesItem = ({game, checkGame, getBetterImg}) => {
   if (game.played) classGame = "played"
 
   let srcImg = getBetterImg(game)
-  
+
   //convert the date and remove the release day
   let date = new Date(game.release_dates[0].date).toDateString().slice(3)
 
@@ -20,12 +21,12 @@ const mysGamesItem = ({game, checkGame, getBetterImg}) => {
           <span className="date">date de sortie: {date}</span>
         </div>
         <div className="description">
-          <button onClick={checkGame}>{game.played ? <i className="checkmark icon"></i> : "you play this game?"}</button>
+          <Button onClick={checkGame} text={`${game.played ? "Joué!" : "Tu as déjà joué à ce jeu?"}`} />
         </div>
       </div>
       <div className="extra content">
         <a>
-          <i className="heart icon"></i>
+          <i className="heart icon" style={{color: 'rgba(223, 62, 123, 1)'}}></i>
           {game.hypes ? game.hypes : "No likes"}
         </a>
       </div>
