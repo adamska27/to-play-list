@@ -18,6 +18,7 @@ class GamesList extends Component {
       gamesToPlay: [],
       search: '',
       filter: 'all',
+      loader: false
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -49,6 +50,7 @@ class GamesList extends Component {
   }
 
   searchGame(e) {
+    this.setState({loader: true})
     e.preventDefault()
     fetch('http://localhost:5000/', {
       method: "POST",
@@ -61,7 +63,7 @@ class GamesList extends Component {
       })
     })
       .then( res => res.json())
-      .then( result => this.setState({games: result, search: ''}))
+      .then( result => this.setState({games: result, search: '', loader: false}))
       .catch( err => console.log(err))
   }
 
@@ -110,6 +112,15 @@ class GamesList extends Component {
               handleChange={this.handleChange} />
             <Button type='submit' text='valider'/>
           </form>
+
+          {this.state.loader ? (
+            <div className="ui active inverted dimmer">
+              <div className="ui text loader" style={{position: "absolute", top:'150px'}}>Chargement</div>
+            </div>
+          )
+            :
+            console.log('loader: ', this.state.loader)
+          }
 
           <div className="ui divided items">
             {this.state.games.map( (game, index) => {
