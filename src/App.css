@@ -35,6 +35,10 @@ form {
   margin: 15px;
 }
 
+.filter-container > .active {
+  background-color: #FF6F00 !important;
+}
+
 .myGames-container {
   margin-top: 0 !important;
 }

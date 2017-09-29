@@ -35,7 +35,11 @@ class GamesList extends Component {
     this.setState({myGames: this.state.myGames})
   }
 
-  selectFilter(filter) {
+  selectFilter(filter, e) {
+    let buttons = document.getElementsByClassName('filter-button')
+    Array.from(buttons).map( button => button.classList.remove("active"))
+    e.target.classList.add("active")
+    
     if (filter === 'played') {
       let gamesPlayed = this.state.myGames.filter( (game) => game.played)
       this.setState({gamesPlayed})
@@ -90,6 +94,7 @@ class GamesList extends Component {
 
   render() {
     let {filter} = this.state
+    let {selectFilter, checkGame, handleChange, searchGame, addGame, getBetterImg} = this
 
     let games = []
 
@@ -106,11 +111,11 @@ class GamesList extends Component {
 
         <section className="ui segment">
           <Header text='Cherchez un jeu à ajouter à votre to play list' />
-          <form className="ui form" onSubmit={this.searchGame.bind(this)} >
+          <form className="ui form" onSubmit={searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "
               name="search"
               value={this.state.search}
-              handleChange={this.handleChange} />
+              handleChange={handleChange} />
             <Button type='submit' text='valider'/>
           </form>
 
@@ -125,14 +130,13 @@ class GamesList extends Component {
 
           <div className="ui divided items">
             {this.state.games.map( (game, index) => {
-              console.log(game)
               return (
                 <GamesItem
                   key={game.id}
                   game={game}
                   played={game.played}
-                  addGame={this.addGame.bind(this, index)}
-                  getBetterImg={this.getBetterImg.bind(this, game)}
+                  addGame={addGame.bind(this, index)}
+                  getBetterImg={getBetterImg.bind(this, game)}
                 />)
             })}
           </div>
@@ -141,9 +145,9 @@ class GamesList extends Component {
         <section className="ui segment myGames-container">
           <Header text='Votre to play list' />
           <div className="filter-container">
-            <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
-            <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
-            <Button onClick={this.selectFilter.bind(this, 'to play')} text="A jouer" />
+            <Button className="filter-button active" onClick={selectFilter.bind(this, 'all')} text="Tous" />
+            <Button className="filter-button" onClick={selectFilter.bind(this, 'played')} text="Joué" />
+            <Button className="filter-button" onClick={selectFilter.bind(this, 'to play')} text="A jouer" />
           </div>
 
           <div className="ui link cards myGames-list">
@@ -155,8 +159,8 @@ class GamesList extends Component {
                   key={game.id}
                   game={game}
                   played={game.played}
-                  checkGame={this.checkGame.bind(this, index)}
-                  getBetterImg={this.getBetterImg.bind(this)}
+                  checkGame={checkGame.bind(this, index)}
+                  getBetterImg={getBetterImg.bind(this)}
                 />
               )
             })
