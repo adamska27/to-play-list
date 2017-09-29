@@ -35,7 +35,6 @@ form {
 }
 
 .myGames-container {
-  width: 50%;
   margin-top: 0 !important;
 }
 
@@ -59,4 +58,11 @@ form {
    -moz-filter: sepia(0.5);
    -o-filter: sepia(0.5);
    -ms-filter: sepia(0.5);
+}
+
+@media only screen and (min-width: 1350px) {
+  .myGames-container {
+    width: 50%;
+    margin-top: 0 !important;
+  }
 }

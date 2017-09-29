@@ -125,6 +125,8 @@ class GamesList extends Component {
             console.log('loader: ', this.state.loader)
           }
 
+          <hr/>
+
           <div className="ui divided items">
             {this.state.games.map( (game, index) => {
               return (
