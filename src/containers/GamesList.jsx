@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loader from '../components/Loader'
 import Header from '../components/Header'
 import GamesItem from '../components/GamesItem'
 import MyGamesItem from '../components/MyGamesItem'
@@ -80,6 +81,13 @@ class GamesList extends Component {
     })
   }
 
+  getBetterImg (game) {
+    let regex = /thumb/
+    //change url to get better quality img
+    //if img doesn't exist throw an img
+    return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
+  }
+
   render() {
     let {filter} = this.state
 
@@ -101,9 +109,7 @@ class GamesList extends Component {
       <div className="app-content">
 
         <section className="ui segment">
-
           <Header text='Cherchez un jeu à ajouter à votre to play list' />
-
           <form className="ui form" onSubmit={this.searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "
               name="search"
@@ -113,9 +119,7 @@ class GamesList extends Component {
           </form>
 
           {this.state.loader ? (
-            <div className="ui active inverted dimmer">
-              <div className="ui text loader" style={{position: "absolute", top:'150px'}}>Chargement</div>
-            </div>
+            <Loader />
           )
             :
             console.log('loader: ', this.state.loader)
@@ -129,15 +133,14 @@ class GamesList extends Component {
                   game={game}
                   played={game.played}
                   addGame={this.addGame.bind(this, index)}
+                  getBetterImg={this.getBetterImg.bind(this, game)}
                 />)
             })}
           </div>
         </section>
 
         <section className="ui segment myGames-container">
-
           <Header text='Votre to play list' />
-          
           <div className="filter-container">
             <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
             <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
@@ -145,22 +148,22 @@ class GamesList extends Component {
           </div>
 
           <div className="ui link cards myGames-list">
-            {
-              games ? (games.map( (game, index) => {
-                if (game.played === undefined) game.played = false
-                console.log(game)
-                return (
-                  <MyGamesItem
-                    key={game.id}
-                    game={game}
-                    played={game.played}
-                    checkGame={this.checkGame.bind(this, index)}
-                  />
-                )
-              })
+            {games ? (games.map( (game, index) => {
+              //add property 'played' to game in order to filter later
+              if (game.played === undefined) game.played = false
+              return (
+                <MyGamesItem
+                  key={game.id}
+                  game={game}
+                  played={game.played}
+                  checkGame={this.checkGame.bind(this, index)}
+                  getBetterImg={this.getBetterImg.bind(this)}
+                />
               )
-                :
-                console.log('noMyGames')
+            })
+            )
+              :
+              console.log('noMyGames')
             }
           </div>
         </section>

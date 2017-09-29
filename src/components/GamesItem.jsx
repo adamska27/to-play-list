@@ -1,15 +1,13 @@
 import React from 'react'
 
-const GamesItem = ({game, addGame}) => {
+const GamesItem = ({game, addGame, getBetterImg}) => {
 
-  let re = /thumb/
-  let srcImg = ""
-  game.cover !== undefined ? srcImg = (`https:${game.cover.url}`).replace(re, 'cover_big') : srcImg = 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
+  let srcImg = getBetterImg(game)
 
   return(
     <div className= "item">
       <div className="ui small image">
-        <img src={srcImg} alt="#"/>
+        <img src={srcImg} alt={game.name}/>
       </div>
       <div className="content">
         <a className="header">{game.name}</a>

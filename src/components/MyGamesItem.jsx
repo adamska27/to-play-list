@@ -1,13 +1,13 @@
 import React from 'react'
 
-const mysGamesItem = ({game, checkGame}) => {
+const mysGamesItem = ({game, checkGame, getBetterImg}) => {
   let classGame = ""
+  //add a specific class to game played
   if (game.played) classGame = "played"
 
-  let re = /thumb/
-  let srcImg = ""
-  game.cover !== undefined ? srcImg = (`https:${game.cover.url}`).replace(re, 'cover_big') : srcImg = 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
-
+  let srcImg = getBetterImg(game)
+  
+  //convert the date and remove the release day
   let date = new Date(game.release_dates[0].date).toDateString().slice(3)
 
   return(
