@@ -23,14 +23,9 @@ app.post('/', (req, res) => {
   const searchValue = req.body.search
 
   client.games({
-    // filters: {
-    //   'release_dates.date-gt': '2014-12-31',
-    //   'release_dates.date-lt': '2018-01-01'
-    // },
     field: '*',
     limit: 50,
     offset: 0,
-    order: 'release_dates.date:desc',
     search: searchValue
   }, [
     'name',

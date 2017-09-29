@@ -39,7 +39,7 @@ class GamesList extends Component {
     let buttons = document.getElementsByClassName('filter-button')
     Array.from(buttons).map( button => button.classList.remove("active"))
     e.target.classList.add("active")
-    
+
     if (filter === 'played') {
       let gamesPlayed = this.state.myGames.filter( (game) => game.played)
       this.setState({gamesPlayed})
@@ -75,14 +75,22 @@ class GamesList extends Component {
 
   addGame(index) {
     let gameToAdd = this.state.games[index]
-    this.setState({
-      myGames: [...this.state.myGames, gameToAdd]
-    })
-    swal({
-      title: "Bien joué",
-      text: `${gameToAdd.name} a bien été ajouté`,
-      icon: "success"
-    })
+    if (this.state.myGames.includes(gameToAdd)) {
+      swal({
+        title: "Oups !",
+        text: `${gameToAdd.name} fait déjà parti de votre to play list`,
+        icon: "error"
+      })
+    } else {
+      this.setState({
+        myGames: [...this.state.myGames, gameToAdd]
+      })
+      swal({
+        title: "Bien joué",
+        text: `${gameToAdd.name} a bien été ajouté`,
+        icon: "success"
+      })
+    }
   }
 
   getBetterImg (game) {
