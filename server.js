@@ -23,11 +23,12 @@ app.post('/', (req, res) => {
   const searchValue = req.body.search
 
   client.games({
-    filters: {
-      'release_dates.date-gt': '2014-12-31',
-      'release_dates.date-lt': '2018-01-01'
-    },
-    limit: 10,
+    // filters: {
+    //   'release_dates.date-gt': '2014-12-31',
+    //   'release_dates.date-lt': '2018-01-01'
+    // },
+    field: '*',
+    limit: 50,
     offset: 0,
     order: 'release_dates.date:desc',
     search: searchValue
@@ -36,7 +37,11 @@ app.post('/', (req, res) => {
     'release_dates.date',
     'rating',
     'hypes',
-    'cover'
+    'cover',
+    'summary',
+    'rating',
+    'genres',
+    'publishers'
   ])
     .then( res => JSON.stringify(res.body, null, 2))
     .then( result => res.send(result))

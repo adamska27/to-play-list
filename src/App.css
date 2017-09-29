@@ -20,6 +20,7 @@ form {
 }
 
 .app-content > .ui > .subtitle {
+  text-align: center;
   background: linear-gradient(to right, #303F9F, #00BCD4);
   border-radius: 5px;
   padding: 10px;

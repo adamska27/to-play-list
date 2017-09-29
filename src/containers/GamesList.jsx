@@ -26,7 +26,7 @@ class GamesList extends Component {
   }
 
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({[e.target.name]: [e.target.value]})
   }
 
   checkGame(index) {
@@ -101,10 +101,6 @@ class GamesList extends Component {
       games = this.state.gamesToPlay
     }
 
-    // if (this.state.search) {
-    //   games = games.filter( game => game.name.toLowerCase().includes(this.state.search.toLowerCase()))
-    // }
-
     return(
       <div className="app-content">
 
@@ -129,6 +125,7 @@ class GamesList extends Component {
 
           <div className="ui divided items">
             {this.state.games.map( (game, index) => {
+              console.log(game)
               return (
                 <GamesItem
                   key={game.id}

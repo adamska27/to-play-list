@@ -21,6 +21,7 @@ const mysGamesItem = ({game, checkGame, getBetterImg}) => {
           <span className="date">date de sortie: {date}</span>
         </div>
         <div className="description">
+          <div>{game.summary ? `${game.summary.substring(0, 150)} (...)` : 'summary no available'}</div>
           <Button onClick={checkGame} text={`${game.played ? "Joué!" : "Tu as déjà joué à ce jeu?"}`} />
         </div>
       </div>
