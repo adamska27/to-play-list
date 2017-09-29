@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from '../components/Header'
 import GamesItem from '../components/GamesItem'
 import MyGamesItem from '../components/MyGamesItem'
 import Input from '../components/Input'
@@ -101,9 +102,7 @@ class GamesList extends Component {
 
         <section className="ui segment">
 
-          <div className="ui sizer vertical segment subtitle">
-            <div className="ui huge header subtitle-text">Cherchez un jeu à ajouter à votre to play list</div>
-          </div>
+          <Header text='Cherchez un jeu à ajouter à votre to play list' />
 
           <form className="ui form" onSubmit={this.searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "
@@ -137,10 +136,8 @@ class GamesList extends Component {
 
         <section className="ui segment myGames-container">
 
-          <div className="ui sizer vertical segment subtitle">
-            <div className="ui huge header subtitle-text">Votre to play list</div>
-          </div>
-
+          <Header text='Votre to play list' />
+          
           <div className="filter-container">
             <Button onClick={this.selectFilter.bind(this, 'all')} text="Tous" />
             <Button onClick={this.selectFilter.bind(this, 'played')} text="Joué" />
