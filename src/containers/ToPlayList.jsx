@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import swal from 'sweetalert'
+
+//components
 import Loader from '../components/Loader'
 import Header from '../components/Header'
 import GamesItem from '../components/GamesItem'
@@ -6,11 +9,11 @@ import MyGamesItem from '../components/MyGamesItem'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
+//css
 import '../App.css'
 
-import swal from 'sweetalert'
 
-class GamesList extends Component {
+class ToPlayList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,27 +33,24 @@ class GamesList extends Component {
   }
 
   checkGame(index) {
-    const game = this.state.myGames[index]
+    let game = this.state.myGames[index]
     game.played =!game.played
     this.setState({myGames: this.state.myGames})
   }
 
   selectFilter(filter, e) {
-    let buttons = document.getElementsByClassName('filter-button')
+    const buttons = document.getElementsByClassName('filter-button')
     Array.from(buttons).map( button => button.classList.remove("active"))
     e.target.classList.add("active")
 
     if (filter === 'played') {
-      let gamesPlayed = this.state.myGames.filter( (game) => game.played)
+      const gamesPlayed = this.state.myGames.filter( (game) => game.played)
       this.setState({gamesPlayed})
-      console.log('played')
     } else if (filter === 'all') {
       this.setState({myGames: this.state.myGames})
-      console.log('all')
     } else if (filter === 'to play') {
-      let gamesToPlay = this.state.myGames.filter( (game) => !game.played)
+      const gamesToPlay = this.state.myGames.filter( (game) => !game.played)
       this.setState({gamesToPlay})
-      console.log('to play')
     }
     this.setState({filter: filter})
   }
@@ -69,12 +69,15 @@ class GamesList extends Component {
       })
     })
       .then( res => res.json())
-      .then( result => this.setState({games: result, search: '', loader: false}))
+      .then( result => this.setState({
+        games: result,
+        search: '',
+        loader: false}))
       .catch( err => console.log(err))
   }
 
   addGame(index) {
-    let gameToAdd = this.state.games[index]
+    const gameToAdd = this.state.games[index]
     if (this.state.myGames.includes(gameToAdd)) {
       swal({
         title: "Oups !",
@@ -94,24 +97,24 @@ class GamesList extends Component {
   }
 
   getBetterImg (game) {
-    let regex = /thumb/
+    const regex = /thumb/
     //change url to get better quality img
-    //if img doesn't exist throw an img
+    //if img doesn't exist throw an basic img
     return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   }
 
   render() {
-    let {filter} = this.state
-    let {selectFilter, checkGame, handleChange, searchGame, addGame, getBetterImg} = this
+    let {filter, search, loader, games} = this.state
+    const {selectFilter, checkGame, handleChange, searchGame, addGame, getBetterImg} = this
 
-    let games = []
+    let myFilteredGames = []
 
     if (filter === 'all') {
-      games = this.state.myGames
+      myFilteredGames = this.state.myGames
     } else if (filter === 'played') {
-      games = this.state.gamesPlayed
+      myFilteredGames = this.state.gamesPlayed
     } else if (filter === 'to play') {
-      games = this.state.gamesToPlay
+      myFilteredGames = this.state.gamesToPlay
     }
 
     return(
@@ -122,22 +125,22 @@ class GamesList extends Component {
           <form className="ui form" onSubmit={searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "
               name="search"
-              value={this.state.search}
+              value={search}
               handleChange={handleChange} />
             <Button type='submit' text='valider'/>
           </form>
 
-          {this.state.loader ? (
+          {loader ? (
             <Loader />
           )
             :
-            console.log('loader: ', this.state.loader)
+            console.log('loader: ', loader)
           }
 
           <hr/>
 
           <div className="ui divided items">
-            {this.state.games.map( (game, index) => {
+            {games.map( (game, index) => {
               return (
                 <GamesItem
                   key={game.id}
@@ -159,7 +162,7 @@ class GamesList extends Component {
           </div>
 
           <div className="ui link cards myGames-list">
-            {games ? (games.map( (game, index) => {
+            {myFilteredGames ? (myFilteredGames.map( (game, index) => {
               //add property 'played' to game in order to filter later
               if (game.played === undefined) game.played = false
               return (
@@ -182,4 +185,4 @@ class GamesList extends Component {
     )
   }
 }
-export default GamesList
+export default ToPlayList

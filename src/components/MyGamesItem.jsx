@@ -8,8 +8,8 @@ const mysGamesItem = ({game, checkGame, getBetterImg}) => {
 
   let srcImg = getBetterImg(game)
 
-  //convert the date and remove the release day
-  let date = new Date(game.release_dates[0].date).toDateString().slice(3)
+  //convert the date and remove the day
+  const date = new Date(game.release_dates[0].date).toDateString().slice(3)
 
   return(
     <div className={`card ${classGame}`}>

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const ButtonStyle = styled.button`
   background-color: rgba(223, 62, 123, 0.7) !important;
   &:hover {
-    background-color: #FF6F00 !important;;
+    background-color: #FF6F00 !important;
   }
 `
 

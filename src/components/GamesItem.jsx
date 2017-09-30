@@ -12,12 +12,6 @@ const GamesItem = ({game, addGame, getBetterImg}) => {
       </div>
       <div className="middle aligned content">
         <a className="header">{game.name}</a>
-        {/* <div className="meta">
-          <span>Description</span>
-        </div>
-        <div className="description">
-          <p></p>
-        </div> */}
         <div className="extra">
           <Button className="ui right floated button" onClick={addGame} text="Ajouter"/>
         </div>

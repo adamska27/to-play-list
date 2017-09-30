@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import GamesList from './containers/GamesList'
+import ToPlayList from './containers/ToPlayList'
 
 class App extends Component {
   render() {
     return(
-      <GamesList />
+      <ToPlayList />
     )
   }
 }
