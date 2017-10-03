@@ -1,6 +1,8 @@
 import React,{ Component } from 'react'
 import MyGamesItem from '../components/MyGamesItem'
 
+import { connect } from 'react-redux'
+
 
 class MyGamesList extends Component {
 
@@ -21,10 +23,11 @@ class MyGamesList extends Component {
         
         const { checkGame, getBetterImg } = this
 
+        console.log('this.props MyGamesLIst: ', this.props)
+
         return(
             <div className="ui link cards myGames-list">
-                <h2>MyGamesList</h2>
-                {/* {myFilteredGames ? (myFilteredGames.map( (game, index) => {
+                {this.props.myGames ? (this.props.myGames.map( (game, index) => {
                     //add property 'played' to game in order to filter later
                     if (game.played === undefined) game.played = false
                     return (
@@ -40,10 +43,12 @@ class MyGamesList extends Component {
                 )
                     :
                     console.log('noMyGames')
-                } */}
+                }
             </div>
         )
     }
 }
 
-export default MyGamesList
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, null)(MyGamesList)

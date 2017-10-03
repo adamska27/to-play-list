@@ -17,7 +17,6 @@ class GamesList extends Component {
 
   addGame(id) {
     const gameToAdd = this.props.gamesList.games.find( game => game.id === id)
-    console.log('this.props GamesList: ', this.props )
 
     if (this.props.myGames.find( game => game.id === gameToAdd.id)) {
       swal({
@@ -36,9 +35,7 @@ class GamesList extends Component {
   }
 
   render() {
-    const {handleChange, searchGame, getBetterImg, addGame} = this
-
-    console.log('this.props GamesList: ', this.props )
+    const { getBetterImg, addGame} = this
 
     return(
       <div className="ui divided items">

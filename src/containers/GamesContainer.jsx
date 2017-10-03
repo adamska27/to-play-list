@@ -12,8 +12,7 @@ class GamesContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      search: '',
-      games: [],
+      search: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -38,8 +37,8 @@ class GamesContainer extends Component {
       .then( res => res.json())
       .then( results => {
         this.setState({
-        search: '',
-        }),
+        search: ''
+        })
         this.props.fetchGames(results)
       })
       .catch( err => {
@@ -51,10 +50,8 @@ class GamesContainer extends Component {
   }
 
   render() {
-    let {filter, search, loader, games} = this.state
+    let { search } = this.state
     const {handleChange, searchGame} = this
-
-    console.log('this.props GamesContainer: ', this.props)
 
     return(
       <section className="ui segment" style={{width: '50%'}}>

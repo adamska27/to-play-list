@@ -25,7 +25,7 @@ class MyGames extends Component {
     render() {     
         const {selectFilter} = this
     
-        let myFilteredGames = []
+        // let myFilteredGames = []
     
         // if (filter === 'all') {
         //   myFilteredGames = this.state.myGames
