@@ -3,7 +3,7 @@ import GamesItem from './GamesItem'
 import swal from 'sweetalert'
 
 import { connect } from 'react-redux'
-import { fetchGames } from '../Redux/actions'
+import { addGame } from '../Redux/actions'
 
 
 class GamesList extends Component {
@@ -15,30 +15,30 @@ class GamesList extends Component {
     return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   }
 
-  addGame(index) {
-    const gameToAdd = this.state.games[index]
-    if (this.state.myGames.includes(gameToAdd)) {
+  addGame(id) {
+    const gameToAdd = this.props.gamesList.games.find( game => game.id === id)
+    console.log('this.props GamesList: ', this.props )
+
+    if (this.props.myGames.find( game => game.id === gameToAdd.id)) {
       swal({
         title: "Oups !",
         text: `${gameToAdd.name} fait déjà parti de votre to play list`,
         icon: "error"
       })
     } else {
-      this.setState({
-        myGames: [...this.state.myGames, gameToAdd]
-      })
-      swal({
-        title: "Bien joué",
-        text: `${gameToAdd.name} a bien été ajouté`,
-        icon: "success"
-      })
-    }
+        this.props.addGame(gameToAdd)
+        swal({
+          title: "Bien joué",
+          text: `${gameToAdd.name} a bien été ajouté`,
+          icon: "success"
+        })
+      }
   }
 
   render() {
     const {handleChange, searchGame, getBetterImg, addGame} = this
 
-    // console.log('this.props GamesList: ', this.props )
+    console.log('this.props GamesList: ', this.props )
 
     return(
       <div className="ui divided items">
@@ -48,7 +48,7 @@ class GamesList extends Component {
               key={game.id}
               game={game}
               played={game.played}
-              addGame={addGame.bind(this, index)}
+              addGame={addGame.bind(this, game.id)}
               getBetterImg={getBetterImg.bind(this, game)}
             />)
           })
@@ -65,4 +65,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, null)(GamesList)
+export default connect(mapStateToProps, { addGame })(GamesList)

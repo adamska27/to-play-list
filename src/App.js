@@ -3,6 +3,7 @@ import './App.css'
 import ToPlayList from './containers/ToPlayList'
 import GamesList from './components/GamesList'
 import GamesContainer from "./containers/GamesContainer";
+import MyGamesContainer from './containers/MyGamesContainer'
 
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
     return(
       <div className="app-content">
         <GamesContainer  />
+        <MyGamesContainer />
       </div>
     )
   }

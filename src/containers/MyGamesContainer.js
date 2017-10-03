@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import MyGamesItem from '../components/MyGamesItem'
+import MyGamesList from '../components/MyGamesList'
 
-
-class MyGames extends Component {
-    checkGame(index) {
-        let game = this.state.myGames[index]
-        game.played =!game.played
-        this.setState({myGames: this.state.myGames})
-    }
+class MyGames extends Component {    
     
     selectFilter(filter, e) {
         const buttons = document.getElementsByClassName('filter-button')
@@ -29,18 +23,17 @@ class MyGames extends Component {
     }
 
     render() {     
-        let {filter, search, loader, games} = this.state
-        const {selectFilter, checkGame, handleChange, searchGame, addGame, getBetterImg} = this
+        const {selectFilter} = this
     
         let myFilteredGames = []
     
-        if (filter === 'all') {
-          myFilteredGames = this.state.myGames
-        } else if (filter === 'played') {
-          myFilteredGames = this.state.gamesPlayed
-        } else if (filter === 'to play') {
-          myFilteredGames = this.state.gamesToPlay
-        }    
+        // if (filter === 'all') {
+        //   myFilteredGames = this.state.myGames
+        // } else if (filter === 'played') {
+        //   myFilteredGames = this.state.gamesPlayed
+        // } else if (filter === 'to play') {
+        //   myFilteredGames = this.state.gamesToPlay
+        // }    
 
         return(
             <section className="ui segment myGames-container">
@@ -51,25 +44,8 @@ class MyGames extends Component {
                     <Button className="filter-button" onClick={selectFilter.bind(this, 'to play')} text="A jouer" />
                 </div>
 
-                <div className="ui link cards myGames-list">
-                    {myFilteredGames ? (myFilteredGames.map( (game, index) => {
-                        //add property 'played' to game in order to filter later
-                        if (game.played === undefined) game.played = false
-                        return (
-                        <MyGamesItem
-                            key={game.id}
-                            game={game}
-                            played={game.played}
-                            checkGame={checkGame.bind(this, index)}
-                            getBetterImg={getBetterImg.bind(this)}
-                        />
-                        )
-                    })
-                    )
-                        :
-                        console.log('noMyGames')
-                    }
-                </div>
+                <MyGamesList />
+
             </section>
         )
     }

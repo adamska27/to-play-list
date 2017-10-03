@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { FETCH_GAMES, FETCH_GAMES_START, FETCH_GAMES_FAILED } from '../actions'
+import { FETCH_GAMES, FETCH_GAMES_START, FETCH_GAMES_FAILED, ADD_GAME_TO_MYGAMES } from '../actions'
 import swal from 'sweetalert'
 
 const initialState = {
@@ -22,6 +22,15 @@ function gamesList(state = initialState, action) {
   }
 }
 
-const rootReducer = combineReducers({ gamesList })
+function myGames(state = [], action) {
+  switch(action.type) {
+    case ADD_GAME_TO_MYGAMES:
+      return [...state, action.game]
+    default:
+      return state
+  }
+}
+
+const rootReducer = combineReducers({ gamesList,  myGames })
 
 export default rootReducer
