@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import ToPlayList from './containers/ToPlayList'
+import GamesList from './components/GamesList'
+import GamesContainer from "./containers/GamesContainer";
+
 
 class App extends Component {
   render() {
     return(
-      <ToPlayList />
+      <div className="app-content">
+        <GamesContainer  />
+      </div>
     )
   }
 }
 
-export default App;
+export default App
