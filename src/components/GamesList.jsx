@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import GamesItem from './GamesItem'
 import swal from 'sweetalert'
 
-import { connect } from 'react-redux'
-import { addGame } from '../Redux/actions'
-
-
 class GamesList extends Component {
 
   getBetterImg (game) {
@@ -36,6 +32,7 @@ class GamesList extends Component {
 
   render() {
     const { getBetterImg, addGame} = this
+    console.log('gameslist props: ', this.props)
 
     return(
       <div className="ui divided items">
@@ -58,8 +55,4 @@ class GamesList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, { addGame })(GamesList)
+export default GamesList

@@ -5,8 +5,10 @@ import Button from '../components/Button'
 import Loader from '../components/Loader'
 import GamesList from '../components/GamesList'
 
+import swal from 'sweetalert'
+
 import { connect } from 'react-redux'
-import { fetchGames, fetchGamesFailed, fetchGamesStart } from '../Redux/actions'
+import { fetchGames, fetchGamesFailed, fetchGamesStart, addGame } from '../Redux/actions'
 
 class GamesContainer extends Component {
   constructor(props) {
@@ -45,7 +47,7 @@ class GamesContainer extends Component {
         this.setState({
           search: '',
           })
-        this.props.fetchGamesFailed(err)
+        if (this.props.fetchGamesFailed(err)) swal('oups', `${err}`, 'error')
       })
   }
 
@@ -67,7 +69,7 @@ class GamesContainer extends Component {
           {this.props.gamesList.loader ? <Loader /> : ""}
           <hr/>
 
-          <GamesList />
+          <GamesList {...this.props} />
 
         </section>
     )
@@ -78,4 +80,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchGames, fetchGamesFailed, fetchGamesStart })(GamesContainer)
+export default connect(mapStateToProps, { fetchGames, fetchGamesFailed, fetchGamesStart, addGame })(GamesContainer)
