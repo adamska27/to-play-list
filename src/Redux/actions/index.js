@@ -17,10 +17,9 @@ export function fetchGames(games) {
   }
 }
 
-export function fetchGamesFailed(err) {
+export function fetchGamesFailed() {
   return {
     type: FETCH_GAMES_FAILED,
-    err
   }
 }
 
