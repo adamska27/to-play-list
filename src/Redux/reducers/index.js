@@ -3,7 +3,6 @@ import { FETCH_GAMES, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILED, ADD_GAME_TO_MYGAM
 
 const initialState = {
   games: [],
-  loader: false,
   fetching: false,
   fetched: false,
   error: false,
@@ -12,11 +11,11 @@ const initialState = {
 function gamesList(state = initialState, action) {
   switch(action.type) {
     case FETCH_GAMES:
-      return {...state, fetching: true, loader: true}
+      return {...state, fetching: true}
     case FETCH_GAMES_SUCCESS:
-      return {...state, games: action.games, fetching: false, fetched: true, loader: false}
+      return {...state, games: action.games, fetching: false, fetched: true}
     case FETCH_GAMES_FAILED:
-      return {...state, loader: false, fetching: false, error: true}
+      return {...state, fetching: false, error: true}
     default:
       return state
   }

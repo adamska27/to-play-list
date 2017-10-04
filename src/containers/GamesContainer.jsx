@@ -55,6 +55,7 @@ class GamesContainer extends Component {
   render() {
     let { search } = this.state
     const {handleChange, searchGame} = this
+    let { gamesList } = this.props
 
     return(
       <section className="ui segment">
@@ -67,7 +68,7 @@ class GamesContainer extends Component {
             <Button type='submit' text='valider'/>
           </form>
 
-          {this.props.gamesList.loader ? <Loader /> : ""}
+          {gamesList.fetching ? <Loader /> : ""}
           <hr/>
 
           <GamesList {...this.props} />
