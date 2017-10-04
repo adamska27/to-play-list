@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import { FETCH_GAMES, FETCH_GAMES_START, FETCH_GAMES_FAILED, ADD_GAME_TO_MYGAMES } from '../actions'
-import swal from 'sweetalert'
 
 const initialState = {
   games: [],
   loader: false,
   fetching: false,
-  fetched: false
+  fetched: false,
+  error: false,
 }
 
 function gamesList(state = initialState, action) {
@@ -14,9 +14,9 @@ function gamesList(state = initialState, action) {
     case FETCH_GAMES_START:
       return {...state, fetching: true, loader: true}
     case FETCH_GAMES:
-      return {...state, games: action.games, fetched: true, loader: false}
+      return {...state, games: action.games, fetching: false, fetched: true, loader: false}
     case FETCH_GAMES_FAILED:
-      return swal('oups', `${action.err}`, 'error')
+      return {... state, loader: false, fetching: false, error: true}
     default:
       return state
   }
