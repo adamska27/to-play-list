@@ -48,7 +48,7 @@ class GamesContainer extends Component {
           search: '',
           })
         console.log('error: ', err.message)
-        if (this.props.fetchGamesFailed(err)) swal('oups', `une erreur s'est produite`, 'error')
+        if (this.props.fetchGamesFailed()) swal('oups', `une erreur s'est produite`, 'error')
       })
   }
 

@@ -23,8 +23,6 @@ class MyGamesList extends Component {
         
         const { checkGame, getBetterImg } = this
 
-        console.log('this.props MyGamesLIst: ', this.props)
-
         return(
             <div className="ui link cards myGames-list">
                 {this.props.myGames ? (this.props.myGames.map( (game, index) => {

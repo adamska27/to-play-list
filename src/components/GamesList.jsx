@@ -32,11 +32,11 @@ class GamesList extends Component {
 
   render() {
     const { getBetterImg, addGame} = this
-    console.log('gameslist props: ', this.props)
+    let { gamesList } = this.props
 
     return(
       <div className="ui divided items">
-        {this.props.gamesList.games ? (this.props.gamesList.games.map( (game, index) => {
+        {gamesList.games ? (gamesList.games.map( (game, index) => {
           return (
             <GamesItem
               key={game.id}

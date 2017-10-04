@@ -3,7 +3,7 @@ import Button from './global/Button'
 
 const GamesItem = ({game, addGame, getBetterImg}) => {
 
-  let srcImg = getBetterImg(game)
+let srcImg = getBetterImg(game)
 
   return(
     <div className= "item">
