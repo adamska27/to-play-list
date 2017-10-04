@@ -28,8 +28,6 @@ class GamesContainer extends Component {
     const {handleChange, searchGame} = this
     let { gamesList } = this.props
 
-    console.log('gamesList: ', gamesList)
-
     return(
       <section className="ui segment">
           <Header text='Cherchez un jeu à ajouter à votre to play list' />
