@@ -1,18 +1,18 @@
-export const FETCH_GAMES_START = 'FETCH_START'
 export const FETCH_GAMES = 'FETCH_GAMES'
+export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS'
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED'
 
 export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
 
-export function fetchGamesStart() {
+export function fetchGames() {
   return {
-    type: FETCH_GAMES_START,
+    type: FETCH_GAMES,
   }
 }
 
-export function fetchGames(games) {
+export function fetchGamesSuccess(games) {
   return {
-    type: FETCH_GAMES,
+    type: FETCH_GAMES_SUCCESS,
     games
   }
 }

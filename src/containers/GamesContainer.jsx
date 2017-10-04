@@ -8,7 +8,7 @@ import GamesList from '../components/GamesList'
 import swal from 'sweetalert'
 
 import { connect } from 'react-redux'
-import { fetchGames, fetchGamesFailed, fetchGamesStart, addGame } from '../Redux/actions'
+import { fetchGames, fetchGamesFailed, fetchGamesSuccess, addGame } from '../Redux/actions'
 
 class GamesContainer extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class GamesContainer extends Component {
 
   searchGame(e) {
     e.preventDefault()
-    this.props.fetchGamesStart()
+    this.props.fetchGames()
     fetch('http://localhost:5000/', {
       method: "POST",
       headers: {
@@ -41,13 +41,14 @@ class GamesContainer extends Component {
         this.setState({
         search: ''
         })
-        this.props.fetchGames(results)
+        this.props.fetchGamesSuccess(results)
       })
       .catch( err => {
         this.setState({
           search: '',
           })
-        if (this.props.fetchGamesFailed(err)) swal('oups', `${err}`, 'error')
+        console.log('error: ', err.message)
+        if (this.props.fetchGamesFailed(err)) swal('oups', `une erreur s'est produite`, 'error')
       })
   }
 
@@ -80,4 +81,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchGames, fetchGamesFailed, fetchGamesStart, addGame })(GamesContainer)
+export default connect(mapStateToProps, { fetchGames, fetchGamesFailed, fetchGamesSuccess, addGame })(GamesContainer)
