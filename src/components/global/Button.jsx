@@ -8,7 +8,13 @@ const ButtonStyle = styled.button`
   }
 `
 
-
-const Button = (props) => <ButtonStyle type={props.type} className={`ui button ${props.className}`} onClick={props.onClick}>{props.text}</ButtonStyle>
+const Button = (props) => 
+  <ButtonStyle 
+    type={props.type}
+    className={`ui button ${props.className}`}
+    onClick={props.onClick}
+  >
+    {props.text}
+  </ButtonStyle>
 
 export default Button
