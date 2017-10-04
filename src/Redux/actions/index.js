@@ -1,12 +1,11 @@
-export const FETCH_GAMES = 'FETCH_GAMES'
+export const FETCH_GAMES_REQUEST = 'FETCH_GAMES_REQUEST'
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS'
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED'
-
 export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
 
-export function fetchGames() {
+export function fetchGamesRequest() {
   return {
-    type: FETCH_GAMES,
+    type: FETCH_GAMES_REQUEST,
   }
 }
 
@@ -28,4 +27,21 @@ export function addGame(game) {
     type: ADD_GAME_TO_MYGAMES,
     game
   }
+}
+
+export const fetchGames = input => dispatch => {
+  dispatch(fetchGamesRequest())
+  return fetch('http://localhost:5000/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      search: input
+    })
+  })
+  .then( res => res.json(), err => console.log(err)) 
+  .then( results => dispatch(fetchGamesSuccess(results)))
+  // .catch( err => fetchGamesFailed())
 }

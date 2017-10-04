@@ -8,7 +8,7 @@ import GamesList from '../components/GamesList'
 import swal from 'sweetalert'
 
 import { connect } from 'react-redux'
-import { fetchGames, fetchGamesFailed, fetchGamesSuccess, addGame } from '../Redux/actions'
+import { fetchGames, addGame } from '../Redux/actions'
 
 class GamesContainer extends Component {
   constructor(props) {
@@ -23,44 +23,23 @@ class GamesContainer extends Component {
     this.setState({search: e.target.value})
   }
 
-  searchGame(e) {
-    e.preventDefault()
-    this.props.fetchGames()
-    fetch('http://localhost:5000/', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        'Accept' : 'application/json'
-      },
-      body: JSON.stringify({
-        search: this.state.search
-      })
-    })
-      .then( res => res.json())
-      .then( results => {
-        this.setState({
-        search: ''
-        })
-        this.props.fetchGamesSuccess(results)
-      })
-      .catch( err => {
-        this.setState({
-          search: '',
-          })
-        console.log('error: ', err.message)
-        if (this.props.fetchGamesFailed()) swal('oups', `une erreur s'est produite`, 'error')
-      })
-  }
-
   render() {
     let { search } = this.state
     const {handleChange, searchGame} = this
     let { gamesList } = this.props
 
+    console.log('gamesList: ', gamesList)
+
     return(
       <section className="ui segment">
           <Header text='Cherchez un jeu à ajouter à votre to play list' />
-          <form className="ui form" onSubmit={searchGame.bind(this)} >
+          <form 
+            className="ui form" 
+            onSubmit={(e) => {
+              e.preventDefault()
+              this.props.fetchGames(this.state.search)}
+              }
+            >
             <Input label="Entrez votre recherche: "
               name="search"
               value={search}
@@ -82,4 +61,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchGames, fetchGamesFailed, fetchGamesSuccess, addGame })(GamesContainer)
+export default connect(mapStateToProps, { addGame, fetchGames })(GamesContainer)
