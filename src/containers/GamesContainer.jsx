@@ -5,8 +5,6 @@ import Button from '../components/global/Button'
 import Loader from '../components/global/Loader'
 import GamesList from '../components/GamesList'
 
-import swal from 'sweetalert'
-
 import { connect } from 'react-redux'
 import { fetchGames, addGame } from '../Redux/actions'
 
@@ -25,7 +23,7 @@ class GamesContainer extends Component {
 
   render() {
     let { search } = this.state
-    const {handleChange, searchGame} = this
+    const {handleChange } = this
     let { gamesList } = this.props
 
     return(
@@ -35,9 +33,9 @@ class GamesContainer extends Component {
             className="ui form" 
             onSubmit={(e) => {
               e.preventDefault()
-              this.props.fetchGames(this.state.search)}
-              }
-            >
+              this.props.fetchGames(this.state.search)
+              this.setState({search: ''})
+              }}>
             <Input label="Entrez votre recherche: "
               name="search"
               value={search}
