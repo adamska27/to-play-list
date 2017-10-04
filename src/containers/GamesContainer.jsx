@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Header from '../components/Header'
-import Input from '../components/Input'
-import Button from '../components/Button'
-import Loader from '../components/Loader'
+import Header from '../components/global/Header'
+import Input from '../components/global/Input'
+import Button from '../components/global/Button'
+import Loader from '../components/global/Loader'
 import GamesList from '../components/GamesList'
 
 import swal from 'sweetalert'
@@ -57,7 +57,7 @@ class GamesContainer extends Component {
     const {handleChange, searchGame} = this
 
     return(
-      <section className="ui segment" style={{width: '50%'}}>
+      <section className="ui segment">
           <Header text='Cherchez un jeu à ajouter à votre to play list' />
           <form className="ui form" onSubmit={searchGame.bind(this)} >
             <Input label="Entrez votre recherche: "

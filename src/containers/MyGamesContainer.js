@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from '../components/Header'
-import Button from '../components/Button'
+import Header from '../components/global/Header'
+import Button from '../components/global/Button'
 import MyGamesList from '../components/MyGamesList'
 
 class MyGames extends Component {    
