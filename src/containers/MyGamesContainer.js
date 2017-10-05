@@ -3,6 +3,10 @@ import Header from '../components/global/Header'
 import Button from '../components/global/Button'
 import MyGamesList from '../components/MyGamesList'
 
+import { connect } from 'react-redux'
+import { checkGame } from '../Redux/actions'
+
+
 class MyGames extends Component {    
     
     selectFilter(filter, e) {
@@ -22,7 +26,8 @@ class MyGames extends Component {
         this.setState({filter: filter})
     }
 
-    render() {     
+    render() {
+        console.log('this.props myGamesContainer', this.props)
         const {selectFilter} = this
     
         // let myFilteredGames = []
@@ -44,14 +49,16 @@ class MyGames extends Component {
                     <Button className="filter-button" onClick={selectFilter.bind(this, 'to play')} text="A jouer" />
                 </div>
 
-                <MyGamesList />
+                <MyGamesList {...this.props} />
 
             </section>
         )
     }
 }
 
-export default MyGames
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, { checkGame })(MyGames)
 
 
 
