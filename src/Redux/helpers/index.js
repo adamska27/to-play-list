@@ -14,6 +14,5 @@ export const alertAddGame = (game, gameAlreadyAdded, status) => {
             text: `${gameAlreadyAdded.name} fait déjà parti de votre to play list`,
             icon: "error"
         })
-
     }
 }

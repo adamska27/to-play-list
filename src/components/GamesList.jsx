@@ -8,7 +8,8 @@ class GamesList extends Component {
     const regex = /thumb/
     //change url to get better quality img
     //if img doesn't exist throw an basic img
-    return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
+    return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big')
+     : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   }
 
   render() {
