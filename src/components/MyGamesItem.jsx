@@ -1,34 +1,42 @@
 import React from 'react'
 import Button from './global/Button'
 
-const mysGamesItem = ({game, checkGame, getBetterImg}) => {
-  let classGame = ""
+const mysGamesItem = ({myGame, checkGame, getBetterImg}) => {
+  let classMyGame = ""
   //add a specific class to game played
-  if (game.played) classGame = "played"
+  if (myGame.played) classMyGame = "played"
 
-  let srcImg = getBetterImg(game)
+  let srcImg = getBetterImg(myGame)
+  console.log(myGame)
 
   //convert the date and remove the day
-  const date = new Date(game.release_dates[0].date).toDateString().slice(3)
+  const date = new Date(myGame.release_dates[0].date).toDateString().slice(3)
 
   return(
-    <div className={`card ${classGame}`}>
+    <div className={`card ${classMyGame}`}>
       <div className="image">
-        <img src={srcImg} alt={game.name} /></div>
+        <img src={srcImg} alt={myGame.name} /></div>
       <div className="content">
-        <a className="header">{game.name}</a>
+        <a className="header">{myGame.name}</a>
         <div className="meta">
           <span className="date">date de sortie: {date}</span>
         </div>
         <div className="description">
-          <div>{game.summary ? `${game.summary.substring(0, 150)} (...)` : 'summary no available'}</div>
-          <Button onClick={checkGame} text={`${game.played ? "Joué!" : "Tu as déjà joué à ce jeu?"}`} />
+          <div>
+            {
+              myGame.summary ? `${myGame.summary.substring(0, 150)} (...)` : 'summary no available'
+            }
+            </div>
+          <Button 
+            onClick={checkGame}
+            text={`${myGame.played ? "Joué!" : "Tu as déjà joué à ce jeu?"}`} 
+          />
         </div>
       </div>
       <div className="extra content">
         <a>
           <i className="heart icon" style={{color: 'rgba(223, 62, 123, 1)'}}></i>
-          {game.hypes ? game.hypes : "No likes"}
+          {myGame.hypes ? myGame.hypes : "No likes"}
         </a>
       </div>
     </div>
