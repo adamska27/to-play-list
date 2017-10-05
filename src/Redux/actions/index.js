@@ -4,6 +4,7 @@ export const FETCH_GAMES_REQUEST = 'FETCH_GAMES_REQUEST'
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS'
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED'
 export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
+export const CHECK_GAME = 'CHECK_GAME'
 
 
 export function fetchGamesRequest() {
@@ -32,6 +33,13 @@ export function addGame(game) {
   }
 }
 
+export function checkGame(game) {
+  return {
+    type: CHECK_GAME,
+    game
+  }
+} 
+
 export const addGameIfNew = game => (dispatch, getState) => {
   const state = getState().myGames
   let gameAlreadyAdded = state.find(myGame => myGame.id === game.id)
@@ -42,7 +50,6 @@ export const addGameIfNew = game => (dispatch, getState) => {
 
   status === 'success' ? dispatch(addGame(game)) : console.log('no dispatch')
 }
-
 
 export const fetchGames = input => dispatch => {
   dispatch(fetchGamesRequest())
