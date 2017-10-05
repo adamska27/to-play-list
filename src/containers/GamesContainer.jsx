@@ -6,7 +6,6 @@ import Loader from '../components/global/Loader'
 import GamesList from '../components/GamesList'
 
 import { connect } from 'react-redux'
-import store from 'Redux/store'
 import { fetchGames, addGameIfNew } from '../Redux/actions'
 
 class GamesContainer extends Component {
