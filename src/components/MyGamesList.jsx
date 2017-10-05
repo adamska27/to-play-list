@@ -1,16 +1,7 @@
 import React,{ Component } from 'react'
 import MyGamesItem from '../components/MyGamesItem'
 
-import { connect } from 'react-redux'
-
-
 class MyGamesList extends Component {
-
-    checkGame(index) {
-        let game = this.state.myGames[index]
-        game.played =!game.played
-        this.setState({myGames: this.state.myGames})
-    }
 
     getBetterImg (game) {
     const regex = /thumb/
@@ -20,25 +11,23 @@ class MyGamesList extends Component {
   }
 
     render() {
-        
+        console.log('this.props myGamesList', this.props)
         const { checkGame, getBetterImg } = this
+
+        let { myGames } = this.props
 
         return(
             <div className="ui link cards myGames-list">
-                {this.props.myGames ? (this.props.myGames.map( (game, index) => {
-                    //add property 'played' to game in order to filter later
-                    if (game.played === undefined) game.played = false
+                {
+                    myGames ? (myGames.map( (myGame, index) => {
                     return (
                     <MyGamesItem
-                        key={game.id}
-                        game={game}
-                        played={game.played}
-                        checkGame={checkGame.bind(this, index)}
+                        key={myGame.id}
+                        myGame={myGame}
+                        checkGame={() => this.props.checkGame(myGame)}
                         getBetterImg={getBetterImg.bind(this)}
-                    />
-                    )
-                })
-                )
+                    />)
+                    }))
                     :
                     console.log('noMyGames')
                 }
@@ -47,6 +36,4 @@ class MyGamesList extends Component {
     }
 }
 
-const mapStateToProps = (state) => state
-
-export default connect(mapStateToProps, null)(MyGamesList)
+export default MyGamesList
