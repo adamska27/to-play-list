@@ -1,7 +1,10 @@
+import { alertAddGame } from '../helpers'
+
 export const FETCH_GAMES_REQUEST = 'FETCH_GAMES_REQUEST'
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS'
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED'
 export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
+
 
 export function fetchGamesRequest() {
   return {
@@ -28,6 +31,18 @@ export function addGame(game) {
     game
   }
 }
+
+export const addGameIfNew = game => (dispatch, getState) => {
+  const state = getState().myGames
+  let gameAlreadyAdded = state.find(myGame => myGame.id === game.id)
+  let status
+
+  gameAlreadyAdded ? status = 'error' : status = 'success'
+  alertAddGame(game, gameAlreadyAdded, status)
+
+  status === 'success' ? dispatch(addGame(game)) : console.log('no dispatch')
+}
+
 
 export const fetchGames = input => dispatch => {
   dispatch(fetchGamesRequest())

@@ -11,28 +11,11 @@ class GamesList extends Component {
     return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   }
 
-  addGame(id) {
-    const gameToAdd = this.props.gamesList.games.find( game => game.id === id)
-
-    if (this.props.myGames.find( game => game.id === gameToAdd.id)) {
-      swal({
-        title: "Oups !",
-        text: `${gameToAdd.name} fait déjà parti de votre to play list`,
-        icon: "error"
-      })
-    } else {
-        this.props.addGame(gameToAdd)
-        swal({
-          title: "Bien joué",
-          text: `${gameToAdd.name} a bien été ajouté`,
-          icon: "success"
-        })
-      }
-  }
-
   render() {
     const { getBetterImg, addGame} = this
     let { gamesList } = this.props
+
+    console.log('this.props gamesList', this.props)
 
     return(
       <div className="ui divided items">
@@ -42,7 +25,7 @@ class GamesList extends Component {
               key={game.id}
               game={game}
               played={game.played}
-              addGame={addGame.bind(this, game.id)}
+              addGame={() => this.props.addGameIfNew(game)}
               getBetterImg={getBetterImg.bind(this, game)}
             />)
           })

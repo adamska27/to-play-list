@@ -6,7 +6,7 @@ import Loader from '../components/global/Loader'
 import GamesList from '../components/GamesList'
 
 import { connect } from 'react-redux'
-import { fetchGames, addGame } from '../Redux/actions'
+import { fetchGames, addGameIfNew } from '../Redux/actions'
 
 class GamesContainer extends Component {
   constructor(props) {
@@ -47,7 +47,6 @@ class GamesContainer extends Component {
           <hr/>
 
           <GamesList {...this.props} />
-
         </section>
     )
   }
@@ -57,4 +56,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { addGame, fetchGames })(GamesContainer)
+export default connect(mapStateToProps, { addGameIfNew, fetchGames })(GamesContainer)
