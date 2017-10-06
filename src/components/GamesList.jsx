@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import GamesItem from './GamesItem'
-import swal from 'sweetalert'
 
 class GamesList extends Component {
 
@@ -13,10 +12,8 @@ class GamesList extends Component {
   }
 
   render() {
-    const { getBetterImg, addGame} = this
+    const { getBetterImg } = this
     let { gamesList } = this.props
-
-    console.log('this.props gamesList', this.props)
 
     return(
       <div className="ui divided items">

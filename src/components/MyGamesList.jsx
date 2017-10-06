@@ -12,7 +12,7 @@ class MyGamesList extends Component {
 
     render() {
         console.log('this.props myGamesList', this.props)
-        const { checkGame, getBetterImg } = this
+        const { getBetterImg } = this
 
         let { myGames } = this.props
 
