@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Button from './global/Button'
 
-class Filters extends Component {
+class Filters extends PureComponent {
 
     styleFilter(e) {
         const buttons = document.getElementsByClassName('filter-button')
@@ -11,6 +11,7 @@ class Filters extends Component {
 
     render() {
         const { filterMyGames } = this.props
+        const { styleFilter } = this
 
         return(
             <div className="filter-container">
@@ -18,26 +19,29 @@ class Filters extends Component {
                     className="filter-button active" 
                     onClick={(e) => {
                         filterMyGames('all')
-                        this.styleFilter(e)
+                        styleFilter(e)
                         }
                     } 
-                    text="Tous" />
+                    text="Tous" 
+                />
                 <Button 
                     className="filter-button"
                     onClick={(e) => {
                         filterMyGames('played')
-                        this.styleFilter(e)
+                        styleFilter(e)
                         }
                     }
-                    text="Joué" />
+                    text="Joué" 
+                />
                 <Button 
                     className="filter-button"
                     onClick={(e) => {
                         filterMyGames('to play')
-                        this.styleFilter(e)
+                        styleFilter(e)
                         }
                     }
-                    text="A jouer" />
+                    text="A jouer" 
+                />
             </div>
         )
     }
