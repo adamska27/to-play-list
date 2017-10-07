@@ -5,6 +5,14 @@ export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS'
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED'
 export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
 export const CHECK_GAME = 'CHECK_GAME'
+export const FILTER_MYGAMES = 'FILTER_MYGAMES'
+
+export function filterMyGames(filterStatus) {
+  return {
+  type: FILTER_MYGAMES,
+  filterStatus
+  }
+}
 
 
 export function fetchGamesRequest() {
