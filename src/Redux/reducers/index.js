@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILED, ADD_GAME_TO_MYGAMES, CHECK_GAME } from '../actions'
+import { FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILED, ADD_GAME_TO_MYGAMES, CHECK_GAME, FILTER_MYGAMES } from '../actions'
 
 const initialState = {
   games: [],
@@ -33,6 +33,17 @@ function myGame(state = {}, action) {
   }
 }
 
+function filterStatus(state = 'all', action) {
+  switch(action.type) {
+    case FILTER_MYGAMES:
+      if (action.filterStatus === 'played') state = 'played'
+      else if (action.filterStatus === 'to play') state ='to play'
+      else state = 'all'
+    default:
+      return state
+  }
+}
+
 function myGames(state = [], action) {
   switch(action.type) {
     case ADD_GAME_TO_MYGAMES:
@@ -47,6 +58,6 @@ function myGames(state = [], action) {
   }
 }
 
-const rootReducer = combineReducers({ gamesList,  myGames })
+const rootReducer = combineReducers({ gamesList,  myGames, filterStatus })
 
 export default rootReducer
