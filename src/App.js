@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
+import Header from './components/global/Header'
+import FiltersContainer from './containers/FiltersContainer'
 import GamesContainer from "./containers/GamesContainer";
 import MyGamesContainer from './containers/MyGamesContainer'
 import { Provider } from 'react-redux'
@@ -11,7 +13,11 @@ class App extends Component {
       <Provider store={store}>
         <div className="app-content">
           <GamesContainer  />
-          <MyGamesContainer />
+          <section className="ui segment myGames-container">
+            <Header text='Votre to play list' />  
+            <FiltersContainer />
+            <MyGamesContainer />
+          </section>
         </div>
       </Provider>
     )
