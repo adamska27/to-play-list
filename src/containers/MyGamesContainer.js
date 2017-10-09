@@ -20,9 +20,15 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispathcToProps = (dispatch) => {
+    return {
+        onCheckGame: (game) => dispatch(checkGame(game)) 
+    }
+}
+
 const MyGamesContainer = connect(
     mapStateToProps,
-    { checkGame }
+    mapDispathcToProps
 )(MyGamesList)
 
 export default MyGamesContainer

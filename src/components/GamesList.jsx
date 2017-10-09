@@ -11,13 +11,17 @@ class GamesList extends Component {
      : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
   }
 
+  // showErrMessage() {
+  //   if (this.props.gamesList.error) <h2>Error</h2>
+  // }
+
   render() {
     const { getBetterImg } = this
     let { gamesList } = this.props
 
     return(
       <div className="ui divided items">
-        {gamesList.games ? (gamesList.games.map( (game, index) => {
+        {gamesList.games.length ? (gamesList.games.map( (game, index) => {
           return (
             <GamesItem
               key={game.id}
@@ -31,6 +35,8 @@ class GamesList extends Component {
         :
         ""
         }
+
+        {this.showErrMessage}
       </div>
     )
   }
