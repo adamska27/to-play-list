@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Header from './components/global/Header'
+import FormContainer from './containers/FormContainer'
 import FiltersContainer from './containers/FiltersContainer'
 import GamesContainer from "./containers/GamesContainer";
 import MyGamesContainer from './containers/MyGamesContainer'
@@ -12,7 +13,15 @@ class App extends Component {
     return(
       <Provider store={store}>
         <div className="app-content">
-          <GamesContainer  />
+
+          <section className="ui segment">
+            <Header text='Cherchez un jeu à ajouter à votre to play list' />
+            <FormContainer />
+            <GamesContainer  />
+
+          </section>
+
+
           <section className="ui segment myGames-container">
             <Header text='Votre to play list' />  
             <FiltersContainer />
