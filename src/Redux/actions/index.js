@@ -7,40 +7,40 @@ export const ADD_GAME_TO_MYGAMES = 'ADD_GAME_TO_MYGAMES'
 export const CHECK_GAME = 'CHECK_GAME'
 export const FILTER_MYGAMES = 'FILTER_MYGAMES'
 
-export function filterMyGames(filterStatus) {
+export const filterMyGames = (filterStatus) => {
   return {
   type: FILTER_MYGAMES,
   filterStatus
   }
 }
 
-export function fetchGamesRequest() {
+export const fetchGamesRequest = () => {
   return {
     type: FETCH_GAMES_REQUEST,
   }
 }
 
-export function fetchGamesSuccess(games) {
+export const fetchGamesSuccess = (games) => {
   return {
     type: FETCH_GAMES_SUCCESS,
     games
   }
 }
 
-export function fetchGamesFailed() {
+export const fetchGamesFailed = () => {
   return {
     type: FETCH_GAMES_FAILED,
   }
 }
 
-export function addGame(game) {
+export const addGame = (game) => {
   return {
     type: ADD_GAME_TO_MYGAMES,
     game
   }
 }
 
-export function checkGame(game) {
+export const checkGame = (game) => {
   return {
     type: CHECK_GAME,
     game
@@ -64,7 +64,7 @@ export const addGameIfNew = game => (dispatch, getState) => {
 
 export const fetchGames = input => dispatch => {
   dispatch(fetchGamesRequest())
-  return fetch('http://localhost:5000/', {
+  fetch('http://localhost:5000/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
