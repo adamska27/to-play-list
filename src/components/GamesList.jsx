@@ -5,7 +5,6 @@ import Loader from './global/Loader'
 class GamesList extends Component {
 
   render() {
-    const { getBetterImg } = this
     let { games, fetching, addGameIfNew } = this.props
 
     return(
