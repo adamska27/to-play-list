@@ -1,14 +1,9 @@
 import React from 'react'
 import Button from './global/Button'
-
-const getBetterImg = (game) => {
-  const regex = /thumb/
-  //change url to get better quality img
-  //if img doesn't exist throw an basic img
-  return game.cover !== undefined ? (`https:${game.cover.url}`).replace(regex, 'cover_big') : 'http://studiofalour.com/wp-content/uploads/2016/06/client-mystere-chou-rave-studiofalour-web.jpg'
-}
+import { getBetterImg } from '../containers/MyGamesContainer'
 
 const mysGamesItem = ({myGame, checkGame}) => {
+
   let classMyGame = ""
   //add a specific class to game played
   if (myGame.played) classMyGame = "played"
@@ -16,10 +11,12 @@ const mysGamesItem = ({myGame, checkGame}) => {
   //convert the date and remove the day
   const date = new Date(myGame.release_dates[0].date).toDateString().slice(3)
 
+  let srcImg = getBetterImg(myGame)
+
   return(
     <div className={`card ${classMyGame}`}>
       <div className="image">
-        <img src={getBetterImg(myGame)} alt={myGame.name} /></div>
+        <img src={srcImg} alt={myGame.name} /></div>
       <div className="content">
         <a className="header">{myGame.name}</a>
         <div className="meta">
