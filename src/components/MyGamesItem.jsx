@@ -23,9 +23,7 @@ const mysGamesItem = ({myGame, checkGame, getBetterImg}) => {
         </div>
         <div className="description">
           <div>
-            {
-              myGame.summary ? `${myGame.summary.substring(0, 150)} (...)` : 'summary no available'
-            }
+            {myGame.summary ? `${myGame.summary.substring(0, 150)} (...)` : 'summary no available'}
             </div>
           <Button 
             onClick={checkGame}

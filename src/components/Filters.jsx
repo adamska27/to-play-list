@@ -12,7 +12,7 @@ class Filters extends PureComponent {
     render() {
         const { filterMyGames } = this.props
         const { styleFilter } = this
-
+        
         return(
             <div className="filter-container">
                 <Button 
