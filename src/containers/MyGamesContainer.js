@@ -11,6 +11,8 @@ const getMyGamesFiltered = (myGames, filter) => {
             return myGames.filter( myGame => !myGame.played)
         case 'played':
             return myGames.filter( myGame => myGame.played)
+        default:
+            return myGames
     }
 }
 

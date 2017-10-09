@@ -3,7 +3,6 @@ import MyGamesItem from '../components/MyGamesItem'
 
 class MyGamesList extends Component {
     render() {
-        const { getBetterImg } = this
         let { onCheckGame, myGames } = this.props
 
         return(
