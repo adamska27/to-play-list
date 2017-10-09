@@ -1,6 +1,6 @@
 import swal from 'sweetalert'
 
-export const alertAddGame = (game, gameAlreadyAdded, status) => {
+export const alertAddGame = (game, status) => {
     if (status === 'success') {
         swal({
         title: "Bien joué",
@@ -11,7 +11,7 @@ export const alertAddGame = (game, gameAlreadyAdded, status) => {
     else if (status === 'error') {
         swal({
             title: "Oups !",
-            text: `${gameAlreadyAdded.name} fait déjà parti de votre to play list`,
+            text: `${game.name} fait déjà parti de votre to play list`,
             icon: "error"
         })
     }

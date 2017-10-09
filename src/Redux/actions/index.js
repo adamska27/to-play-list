@@ -14,7 +14,6 @@ export function filterMyGames(filterStatus) {
   }
 }
 
-
 export function fetchGamesRequest() {
   return {
     type: FETCH_GAMES_REQUEST,
@@ -53,10 +52,14 @@ export const addGameIfNew = game => (dispatch, getState) => {
   let gameAlreadyAdded = state.find(myGame => myGame.id === game.id)
   let status
 
-  gameAlreadyAdded ? status = 'error' : status = 'success'
-  alertAddGame(game, gameAlreadyAdded, status)
+  if (gameAlreadyAdded) {
+    status = 'error'
+  } else {
+    status = 'success'
+    dispatch(addGame(game))
+  }
 
-  status === 'success' ? dispatch(addGame(game)) : console.log('no dispatch')
+  alertAddGame(game, status)  
 }
 
 export const fetchGames = input => dispatch => {
@@ -73,5 +76,4 @@ export const fetchGames = input => dispatch => {
   })
   .then( res => res.json(), err => console.log(err)) 
   .then( results => dispatch(fetchGamesSuccess(results)))
-  // .catch( err => fetchGamesFailed())
 }
