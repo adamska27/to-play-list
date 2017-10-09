@@ -7,7 +7,7 @@ const initialState = {
     error: false,
 }
   
-function gamesList(state = initialState, action) {
+const gamesList = (state = initialState, action) => {
     switch(action.type) {
       case FETCH_GAMES_REQUEST:
         return {...state, fetching: true}

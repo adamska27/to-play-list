@@ -1,6 +1,6 @@
 import { ADD_GAME_TO_MYGAMES, CHECK_GAME } from '../actions'
 
-function myGame(state = {}, action) {
+const myGame = (state = {}, action) => {
     switch(action.type) {
       case CHECK_GAME:
         if (state.id === action.game.id) {
@@ -13,7 +13,7 @@ function myGame(state = {}, action) {
 }
   
 
-function myGames(state = [], action) {
+const myGames = (state = [], action) => {
     switch(action.type) {
       case ADD_GAME_TO_MYGAMES:
         action.game.played = false
