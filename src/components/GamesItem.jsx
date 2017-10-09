@@ -1,9 +1,9 @@
 import React from 'react'
 import Button from './global/Button'
 
-const GamesItem = ({game, addGame, getBetterImg}) => {
+const GamesItem = ({game, addGame}) => {
 
-let srcImg = getBetterImg(game)
+  let srcImg = getBetterImg(game)
 
   return(
     <div className= "item">
