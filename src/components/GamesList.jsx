@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GamesItem from './GamesItem'
+import Loader from './global/Loader'
 
 class GamesList extends Component {
 
@@ -17,11 +18,16 @@ class GamesList extends Component {
 
   render() {
     const { getBetterImg } = this
-    let { gamesList } = this.props
+    let { games, fetching } = this.props
+
+    console.log(this.props)
 
     return(
       <div className="ui divided items">
-        {gamesList.games.length ? (gamesList.games.map( (game, index) => {
+
+        {fetching ? <Loader /> : ""}
+
+        {games.length ? (games.map( (game, index) => {
           return (
             <GamesItem
               key={game.id}
