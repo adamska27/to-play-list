@@ -1,28 +1,18 @@
-import React, { Component } from 'react'
-import Loader from '../components/global/Loader'
 import GamesList from '../components/GamesList'
 
 import { connect } from 'react-redux'
 import { addGameIfNew } from '../Redux/actions'
 
-class GamesContainer extends Component {
-
-  render() {
-    let { gamesList } = this.props
-
-    return(
-        <div>
-          {gamesList.fetching ? <Loader /> : ""}
-          <hr/>
-
-          <GamesList {...this.props} />
-        </div>
-    )
+const mapStateToProps = (state) => {
+  return {
+    fetching: state.gamesList.fetching,
+    games: state.gamesList.games
   }
 }
 
-const mapStateToProps = (state) => {
-  return state
-}
+const GamesContainer = connect(
+  mapStateToProps,
+  { addGameIfNew }
+)(GamesList)
 
-export default connect(mapStateToProps, { addGameIfNew })(GamesContainer)
+export default GamesContainer
