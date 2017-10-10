@@ -18,15 +18,14 @@ class App extends Component {
             <Header text='Cherchez un jeu à ajouter à votre to play list' />
             <FormContainer />
             <GamesContainer  />
-
           </section>
-
 
           <section className="ui segment myGames-container">
             <Header text='Votre to play list' />  
             <FiltersContainer />
             <MyGamesContainer />
           </section>
+
         </div>
       </Provider>
     )

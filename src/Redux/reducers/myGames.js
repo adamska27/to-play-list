@@ -11,7 +11,6 @@ const myGame = (state = {}, action) => {
         return state
     }
 }
-  
 
 const myGames = (state = [], action) => {
     switch(action.type) {
