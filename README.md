@@ -12,7 +12,7 @@ The project has two branches one with only react and the other with react and re
 
 ## Development setup
 
-npm install
-node server.js
-npm start 
-npm test
+- npm install
+- node server.js
+- npm start
+- npm test
