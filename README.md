@@ -8,6 +8,8 @@ You can :
   - click on the game in your board to set it to played
   - filter your games to see all games, the games you've played or the games you want to play
 
+The project has two branches one with only react and the other with react and redux 
+
 ## Development setup
 
 npm install
